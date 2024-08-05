@@ -1,7 +1,7 @@
 // components/TaskBoard.tsx
 import React from 'react';
 import { Grid, Typography, Badge, Container, Button } from '@mui/material';
-import { Task } from '@/model/Task';
+import Task from '@/model/Task';
 import TaskCard from './TaskCard';
 
 interface TaskBoardProps {
@@ -52,7 +52,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({
         </Typography>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {todo.map(task => (
-            <TaskCard key={task.id} task={task} onComplete={() => onCompleteTask(task)} />
+            <TaskCard key={task.id} isInProgress={true} task={task} onComplete={() => onCompleteTask(task)} />
           ))}
         </div>
       </Grid>
@@ -67,7 +67,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({
         </Typography>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {inProgress.map(task => (
-            <TaskCard key={task.id} task={task} onComplete={() => onCompleteTask(task)} />
+            <TaskCard key={task.id} task={task} isInProgress={true} onComplete={() => onCompleteTask(task)} />
           ))}
         </div>
       </Grid>
@@ -82,7 +82,7 @@ const TaskBoard: React.FC<TaskBoardProps> = ({
         </Typography>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {completed.map(task => (
-            <TaskCard key={task.id} task={task} onComplete={() => onCompleteTask(task)} />
+            <TaskCard key={task.id} isInProgress={true} task={task} onComplete={() => onCompleteTask(task)} />
           ))}
         </div>
       </Grid>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, Container, Grid, Typography, Badge, Box } from '@mui/material';
-import { Task } from '@/model/Task';
+import Task from '@/model/Task';
 import { useTheme } from '@/context/ThemeContext'; // Import the useTheme hook
 import { getActiveTasks, getCompletedTasks, getAllTasks, completeTask } from '@/modules/taskManager'; // Import task manager functions
 import TaskCard from '@/components/TaskCard'; // Import the TaskCard component
@@ -177,8 +177,8 @@ const Home: React.FC = () => {
                 animation: `${fadeIn} 0.5s ease-in`,
                 position: 'fixed',
                 left: '24%',
-                top: '72%',
-                fontSize: '2rem' // Adjusted size for smaller text
+                top: '85%',
+                fontSize: '1.4rem' // Adjusted size for smaller text
               }}>
               You are all caught up!
             </Typography>

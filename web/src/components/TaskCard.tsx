@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, Divider, Typography, Box } from '@mui/material';
-import { Task } from '@/model/Task';
+import Task from '@/model/Task';
 import { keyframes } from '@mui/system';
 
 // Define keyframes for smooth transitions

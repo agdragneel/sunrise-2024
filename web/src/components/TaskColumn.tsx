@@ -1,7 +1,7 @@
 // components/TaskColumn.tsx
 import React from 'react';
 import { Typography, Badge, Card, CardContent, CardActions, Button, Divider } from '@mui/material';
-import { Task } from '@/model/Task';
+import Task from '@/model/Task';
 
 interface TaskColumnProps {
   title: string;

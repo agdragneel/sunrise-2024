@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Task } from '@/model/Task';
+import Task from '@/model/Task';
 import { initialTasks } from '@/utils/TaskList';
 
 let tasks: Task[] = [...initialTasks];
