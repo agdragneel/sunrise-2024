@@ -102,3 +102,70 @@ describe('Task Manager', () => {
     );
   });
 });
+
+//Additional Unit Tests
+
+describe('Task Manager Additional Tests', () => {
+  beforeEach(() => {
+    initializeTasks();
+  });
+
+  test('should handle duplicate task titles', () => {
+    // Create two tasks with the same title
+    createTask('Duplicate Task', 'Description 1', 'Intern', 1);
+    createTask('Duplicate Task', 'Description 2', 'Intern', 2);
+
+    const activeTasks = getActiveTasks();
+    expect(activeTasks).toContainEqual(
+      expect.objectContaining({ title: 'Duplicate Task', description: 'Description 1' })
+    );
+    expect(activeTasks).not.toContainEqual(
+      expect.objectContaining({ title: 'Duplicate Task', description: 'Description 2' })
+    );
+  });
+
+  test('should not update a task with invalid ID', () => {
+    // Try updating a task with an invalid ID
+    updateTask(999, { title: 'Invalid Task Title' });
+    const allTasks = getAllTasks();
+    expect(allTasks).not.toContainEqual(
+      expect.objectContaining({ title: 'Invalid Task Title' })
+    );
+  });
+
+  test('should not delete a task with invalid ID', () => {
+    // Try deleting a task with an invalid ID
+    deleteTask(999);
+    const allTasks = getAllTasks();
+    expect(allTasks).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ title: 'Initial Setup' }),
+        expect.objectContaining({ title: 'Basic Introduction' }),
+        expect.objectContaining({ title: 'Basic Git' }),
+        expect.objectContaining({ title: 'Git Collaboration' }),
+        expect.objectContaining({ title: 'JavaScript Basics' }),
+        expect.objectContaining({ title: 'JavaScript Project' }),
+        expect.objectContaining({ title: 'API Introduction' }),
+        expect.objectContaining({ title: 'API Consumption' }),
+        expect.objectContaining({ title: 'Final Project' }),
+        expect.objectContaining({ title: 'Project Presentation' })
+      ])
+    );
+  });
+
+  
+
+  test('should create and retrieve a new task', () => {
+    // Create a new task
+    createTask('New Task', 'New task description', 'Intern', 1);
+    const activeTasks = getActiveTasks();
+    const allTasks = getAllTasks();
+
+    expect(activeTasks).toContainEqual(
+      expect.objectContaining({ title: 'New Task' })
+    );
+    expect(allTasks).toContainEqual(
+      expect.objectContaining({ title: 'New Task' })
+    );
+  });
+});
